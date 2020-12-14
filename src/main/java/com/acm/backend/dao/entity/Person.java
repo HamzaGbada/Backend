@@ -26,8 +26,8 @@ public class Person implements Serializable {
     private String password;
     private String email;
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "role",
-            joinColumns = @JoinColumn(name = "user_id"),
+    @JoinTable(name = "person_role",
+            joinColumns = @JoinColumn(name = "person_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     @JsonIgnore
     private List<Role> roles;

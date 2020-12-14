@@ -22,6 +22,10 @@ public class User  extends Person implements Serializable {
     private Long id;
     private String name;
     private double score;
+
+    @OneToOne
+    //@JsonIgnore
+    private SerialNumber serialNumber;
     @OneToMany
     private List<User> followers;
     @OneToMany
