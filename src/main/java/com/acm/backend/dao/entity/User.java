@@ -23,7 +23,7 @@ public class User  extends Person implements Serializable {
     private String name;
     private double score;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.REMOVE)
     //@JsonIgnore
     private SerialNumber serialNumber;
     @OneToMany
@@ -31,10 +31,10 @@ public class User  extends Person implements Serializable {
     @OneToMany
     private  List<User> following;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.REMOVE)
     private List<Reaction> reactions;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.REMOVE)
     private List<Comment> comments;
 
     @OneToMany
