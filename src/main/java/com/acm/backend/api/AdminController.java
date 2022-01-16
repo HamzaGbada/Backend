@@ -1,6 +1,8 @@
 package com.acm.backend.api;
 
 import com.acm.backend.dao.entity.SerialNumber;
+import com.acm.backend.dao.entity.User;
+import com.acm.backend.dao.repository.UserRepository;
 import com.acm.backend.resource.SerialNumberResource;
 import com.acm.backend.service.services.SerialNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ import java.util.Optional;
 public class AdminController {
     @Autowired
     private SerialNumberService serialNumberService;
+
+    @Autowired
+    private UserRepository userRepository;
     /*
     CRUD SERIAL NUMBER
      */
@@ -61,6 +66,13 @@ public class AdminController {
         this.serialNumberService.removeSerialNumber(id);
         return ResponseEntity.ok("Serial Number Removed Successfully");
     }
+
+    @GetMapping("/getUserBySerialNumberValue/{value}")
+    public ResponseEntity<?> getSerialNumberByIsReserved(@PathVariable Long value){
+        User user = userRepository.findBySerialNumber_Value(value);
+        return ResponseEntity.ok(user);
+    }
+
 ///////////////////////////////////////////////
 
 
